@@ -7,9 +7,26 @@ class ListBox extends StatefulWidget {
 }
 
 class _ListBoxState extends State<ListBox> {
+  //create object map that has key is String and value is boolean
   Map<String, bool> todos = new Map();
-
+  /**
+   *@param text is a String 
+   * return text with checkbox
+   */
+  void add(String text) {
+    setState(() {
+      if (text != "") {
+        //add text into todos
+        todos[text] = false;
+      }
+    });
+  }
+  /**
+   * @param context is BuildContext for display on screen
+   * return 
+   */
   createDialog(BuildContext context) {
+    //Creates a controller for an editable text field.
     TextEditingController todoController = TextEditingController();
     return showDialog(
         context: context,
@@ -20,19 +37,17 @@ class _ListBoxState extends State<ListBox> {
               autofocus: true,
               controller: todoController,
             ),
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(20.0),
-            ),
             actions: <Widget>[
               MaterialButton(
                 onPressed: () {
-                  Navigator.of(context).pop(todoController.text.toString());
+                  Navigator.of(context).pop();
                 },
                 child: Text("Cancel", style: TextStyle(color: Colors.blue)),
               ),
               MaterialButton(
                 onPressed: () {
-                  Navigator.of(context).pop(todoController.text.toString());
+                  Navigator.of(context).pop();
+                  add(todoController.text.toString());
                 },
                 child: Text("Add", style: TextStyle(color: Colors.blue)),
               ),
