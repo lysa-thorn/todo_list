@@ -9,7 +9,9 @@ class ListBox extends StatefulWidget {
 class _ListBoxState extends State<ListBox> {
   //create object map that has key is String and value is boolean
   Map<String, bool> todos = new Map();
+
   /**
+   * this fuction use for add text into todos
    *@param text is a String 
    * return text with checkbox
    */
@@ -22,8 +24,9 @@ class _ListBoxState extends State<ListBox> {
     });
   }
   /**
+   * this function for return alert dailog
    * @param context is BuildContext for display on screen
-   * return 
+   * return alert dailog with textField and two button
    */
   createDialog(BuildContext context) {
     //Creates a controller for an editable text field.
